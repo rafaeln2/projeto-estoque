@@ -7,17 +7,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.projeto.database.entities.Produto;
 import com.projeto.database.entities.TipoProduto;
-import com.projeto.database.repository.ProdutoRepository;
-import com.projeto.database.repository.TipoProdutoRepository;
+import com.projeto.database.services.ProdutoService;
+import com.projeto.database.services.TipoProdutoService;
 
 @SpringBootApplication
 public class ProjetoEstoqueApplication implements CommandLineRunner {
 
 	@Autowired
-	ProdutoRepository produtoRepository;
+	ProdutoService produtoService;
 
 	@Autowired
-	TipoProdutoRepository tipoProdutoRepository;
+	TipoProdutoService tipoProdutoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoEstoqueApplication.class, args);
@@ -30,11 +30,11 @@ public class ProjetoEstoqueApplication implements CommandLineRunner {
 		produto1.setQuantidade(3);
 		TipoProduto tipoProduto1 = new TipoProduto();
 		tipoProduto1.setDescricao("Eletronico");
-		tipoProdutoRepository.save(tipoProduto1);
+		tipoProdutoService.save(tipoProduto1);
 		produto1.setTipoProduto(tipoProduto1);
 
-		produtoRepository.save(produto1);
-
+		produtoService.save(produto1);
+		
 	}
 
 }
