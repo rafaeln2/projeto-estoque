@@ -6,7 +6,7 @@ import com.projeto.database.entities.TipoProduto;
 
 public interface TipoProdutoService {
 
-//	public List<TipoProduto> getTiposProduto();
+	public List<TipoProduto> getTiposProduto();
 	
 	public TipoProduto save(TipoProduto tipoProduto);
 }
