@@ -30,6 +30,23 @@ public class Produto {
 	public Produto() {
 		super();
 	}
+	
+	public Produto(TipoProduto tipoProduto, String descricao, Integer quantidade) {
+		super();
+		this.tipoProduto = tipoProduto;
+		this.descricao = descricao;
+		this.quantidade = quantidade;
+	}
+
+	public Produto(Integer id, TipoProduto tipoProduto, String descricao, Integer quantidade) {
+		super();
+		this.id = id;
+		this.tipoProduto = tipoProduto;
+		this.descricao = descricao;
+		this.quantidade = quantidade;
+	}
+
+
 
 	public Integer getId() {
 		return id;

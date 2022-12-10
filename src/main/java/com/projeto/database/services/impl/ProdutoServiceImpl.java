@@ -1,5 +1,7 @@
 package com.projeto.database.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class ProdutoServiceImpl implements ProdutoService{
 	@Override
 	public Produto save(Produto produto) {
 		return produtoRepository.save(produto);
+	}
+
+	@Override
+	public List<Produto> getProdutos() {
+		return produtoRepository.findAll();
 	}
 
 }
