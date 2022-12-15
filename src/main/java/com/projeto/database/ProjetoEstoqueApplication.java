@@ -28,12 +28,24 @@ public class ProjetoEstoqueApplication implements CommandLineRunner {
 		Produto produto1 = new Produto();
 		produto1.setDescricao("descrição produto");
 		produto1.setQuantidade(3);
+		
+		Produto produto2 = new Produto();
+		produto1.setDescricao("descricao 2");
+		produto1.setQuantidade(6);
+		
 		TipoProduto tipoProduto1 = new TipoProduto();
 		tipoProduto1.setDescricao("Eletronico");
 		tipoProdutoService.save(tipoProduto1);
+		
+		TipoProduto tipoProduto2 = new TipoProduto();
+		tipoProduto2.setDescricao("Moveis");
+		tipoProdutoService.save(tipoProduto2);
+		
+				
 		produto1.setTipoProduto(tipoProduto1);
-
+		produto2.setTipoProduto(tipoProduto2);
 		produtoService.save(produto1);
+		produtoService.save(produto2);
 		
 	}
 

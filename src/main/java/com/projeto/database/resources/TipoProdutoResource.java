@@ -9,9 +9,11 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.database.entities.TipoProduto;
@@ -41,6 +43,18 @@ public class TipoProdutoResource {
 		
 		TipoProduto novoTipoProduto = tipoProdutoService.save(mapper.mapTipoProdutoDTOtoTipoProduto(dto));
 		return ResponseEntity.created(new URI("/tipoProduto/salva/" + novoTipoProduto.getId())).body(novoTipoProduto);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<TipoProduto> findTipoProdutoById(@PathVariable Integer id){
+		TipoProduto novoTipoProduto = tipoProdutoService.findById(id);
+		return ResponseEntity.ok().body(novoTipoProduto);
+	}
+	
+	@GetMapping("/descricao")
+	public ResponseEntity<List<TipoProduto>> findTipoProdutoByDescricaoIgnoreCase(@RequestParam String descricao){
+		List<TipoProduto> novoTipoProduto = tipoProdutoService.findByDescricaoContainingIgnoreCase(descricao);
+		return ResponseEntity.ok().body(novoTipoProduto);
 	}
 
 }

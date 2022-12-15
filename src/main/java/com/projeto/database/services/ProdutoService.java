@@ -10,4 +10,6 @@ public interface ProdutoService {
 	
 	public Produto save(Produto produto);
 	
+	public Produto findById(Integer id);
+	
 }

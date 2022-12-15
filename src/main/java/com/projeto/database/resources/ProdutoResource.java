@@ -9,12 +9,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.database.entities.Produto;
+import com.projeto.database.entities.TipoProduto;
 import com.projeto.database.entities.dto.ProdutoDTO;
 import com.projeto.database.entities.mapper.ProdutoMapper;
 import com.projeto.database.services.ProdutoService;
@@ -42,5 +44,11 @@ public class ProdutoResource {
 		Produto novoProduto = produtoService.save(mapper.mapProdutoDTOtoProduto(dto));
 		return ResponseEntity.created(new URI("/Produto/salva/" + novoProduto.getId()))
 				.body(novoProduto);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Produto> findProdutoById(@PathVariable Integer id){
+		Produto novoProduto = produtoService.findById(id);
+		return ResponseEntity.ok().body(novoProduto);
 	}
 }

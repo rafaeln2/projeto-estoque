@@ -9,4 +9,8 @@ public interface TipoProdutoService {
 	public List<TipoProduto> getTiposProduto();
 	
 	public TipoProduto save(TipoProduto tipoProduto);
+	
+	public TipoProduto findById(Integer id);
+	
+	public List<TipoProduto> findByDescricaoContainingIgnoreCase(String descricao);
 }
